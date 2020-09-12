@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Vehicles{% endblock title %}
+
+{% block content %}
+  {% for Vehicle in object_list %}
+    <div class="card">
+      <div class="card-header">
+          <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Client</th>
+                  <th scope="col">Made</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">VIN</th>
+                  <th scope="col">Date of Purchase</th>
+                  <th scope="col">Last Date of Service</th>
+                </tr>
+              </thead>
+                <tbody>
+                    <tr>
+{#                      <th scope="row">1</th>#}
+                      <td>{{ Vehicle.client }}</td>
+                      <td>{{ Vehicle.make }}</td>
+                      <td>{{ Vehicle.model }}</td>
+                      <td>{{ Vehicle.VIN }}</td>
+                      <td>{{ Vehicle.DatePurchase }}</td>
+                      <td>{{ Vehicle.LastService }}</td>
+                    </tr>
+                </tbody>
+          </table>
+
+{#          #}
+{#        <span class="font-weight-bold">{{ Vehicle.client }}</span>#}
+{#        <span class="font-weight-bold">Made {{ Vehicle.make }} | </span>#}
+{#        <span class="font-weight-bold">model: {{ Vehicle.model }} | </span>#}
+{#        <span class="font-muted">VIN: {{ Vehicle.VIN }} | </span>#}
+{#        <span class="font-muted-">Date of Purchase: {{ Vehicle.DatePurchase }} | </span>#}
+{#        <span class="font-muted">Last Date of Service: {{ Vehicle.LastService }} | </span>#}
+      </div>
+   <p><a href="{% url 'vehicle_edit' Vehicle.pk %}">Edit</a> | <a href="{% url 'vehicle_delete' Vehicle.pk %}">Delete</a></p>
+
+    </div>
+    <br />
+  {% endfor %}
+{% endblock content %}
